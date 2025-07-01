@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Yeni Not Oluştur</title>
+</head>
+<body>
+<h1>Yeni Not Oluştur</h1>
+<form th:action="@{/notes/save}" th:object="${note}" method="post">
+    <label for="title">Başlık:</label>
+    <input type="text" id="title" th:field="*{title}" required />
+    <br/><br/>
+    <label for="content">İçerik:</label>
+    <textarea id="content" th:field="*{content}" rows="5" cols="30" required></textarea>
+    <br/><br/>
+    <button type="submit">Kaydet</button>
+    <a th:href="@{/notes}">İptal</a>
+</form>
+</body>
+</html>

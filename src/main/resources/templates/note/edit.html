@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Not Düzenle</title>
+</head>
+<body>
+<h1>Not Düzenle</h1>
+<form th:action="@{/notes/update}" th:object="${note}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <label for="title">Başlık:</label>
+    <input type="text" id="title" th:field="*{title}" required />
+    <br/><br/>
+    <label for="content">İçerik:</label>
+    <textarea id="content" th:field="*{content}" rows="5" cols="30" required></textarea>
+    <br/><br/>
+    <button type="submit">Güncelle</button>
+    <a th:href="@{/notes}">İptal</a>
+</form>
+</body>
+</html>

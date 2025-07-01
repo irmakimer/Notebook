@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Not Listesi</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+<h1>Notlar</h1>
+<a th:href="@{/notes/create}">Yeni Not Oluştur</a>
+<table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Başlık</th>
+        <th>İşlemler</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="note : ${notes}">
+        <td th:text="${note.id}">1</td>
+        <td th:text="${note.title}">Başlık</td>
+        <td>
+            <a th:href="@{/notes/edit/{id}(id=${note.id})}">Düzenle</a> |
+            <a th:href="@{/notes/delete/{id}(id=${note.id})}"
+               onclick="return confirm('Not silinsin mi?');">Sil</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
