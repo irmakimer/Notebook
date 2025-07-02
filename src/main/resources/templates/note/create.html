@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Yeni Not Oluştur</title>
+    <meta charset="UTF-8">
+    <title>Yeni Not</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
-<h1>Yeni Not Oluştur</h1>
-<form th:action="@{/notes/save}" th:object="${note}" method="post">
-    <label for="title">Başlık:</label>
-    <input type="text" id="title" th:field="*{title}" required />
-    <br/><br/>
-    <label for="content">İçerik:</label>
-    <textarea id="content" th:field="*{content}" rows="5" cols="30" required></textarea>
-    <br/><br/>
-    <button type="submit">Kaydet</button>
-    <a th:href="@{/notes}">İptal</a>
-</form>
+<div class="container mt-5">
+    <h2>Yeni Not Ekle</h2>
+    <form th:action="@{/notes/create}" method="post" th:object="${note}">
+        <div class="mb-3">
+            <label>Başlık</label>
+            <input type="text" th:field="*{title}" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label>İçerik</label>
+            <textarea th:field="*{content}" class="form-control" rows="6" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Kaydet</button>
+        <a href="/notes" class="btn btn-secondary">İptal</a>
+    </form>
+</div>
 </body>
 </html>
